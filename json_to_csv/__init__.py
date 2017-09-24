@@ -4,6 +4,7 @@
 
 import csv
 import copy
+import json
 import uuid
 
 ROW_TEMPLATE = {
@@ -54,5 +55,13 @@ def structureToRelationalDicts(data, parentId=None, parentKey=None):
 
     yield row
 
-def jsonToCsv(jsonString):
-    pass
+def jsonToCsv(jsonFilepath, csvFilepath):
+    with open(jsonFilepath, "r") as fh:
+        data = json.load(fh)
+    
+    with open(csvFilepath, "w") as fh:
+        writer = csv.DictWriter(fh, fieldnames=sorted(ROW_TEMPLATE.keys()))
+        writer.writeheader()
+
+        for row in structureToRelationalDicts(data):
+            writer.writerow(row)

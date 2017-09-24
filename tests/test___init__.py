@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import io
 import unittest
 
 import json_to_csv as subject

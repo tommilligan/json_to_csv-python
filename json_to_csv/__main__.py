@@ -3,6 +3,7 @@
 """
 
 import argparse
+import json
 import logging
 import sys
 
@@ -17,6 +18,8 @@ def mainParser():
     """
     parser = argparse.ArgumentParser("json_to_csv")
     parser.add_argument("-v", "--verbose", action="store_true", help="Turn up logging")
+    parser.add_argument("inputFile", help="Input JSON file")
+    parser.add_argument("outputFile", help="Output CSV file")
     return parser
 
 def main():
@@ -43,8 +46,7 @@ def main():
     logger.debug(args)
 
     # Call module
-    for line in json_to_csv.jsonToCsv(sys.stdin.read()):
-        print(line, end='')
+    json_to_csv.jsonToCsv(args.inputFile, args.outputFile)
     
     logger.debug("Main completed")
 
