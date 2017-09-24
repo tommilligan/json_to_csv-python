@@ -1,0 +1,17 @@
+language: python
+cache: pip
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "nightly"
+install:
+  - pip install -r requirements-dev.txt
+script:
+  - nose2 --with-coverage
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email: false
