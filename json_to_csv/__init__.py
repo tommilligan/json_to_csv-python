@@ -55,10 +55,7 @@ def structureToRelationalDicts(data, parentId=None, parentKey=None):
 
     yield row
 
-def jsonToCsv(jsonFilepath, csvFilepath):
-    with open(jsonFilepath, "r") as fh:
-        data = json.load(fh)
-    
+def structureToCsv(data, csvFilepath):    
     with open(csvFilepath, "w") as fh:
         writer = csv.DictWriter(fh, fieldnames=sorted(ROW_TEMPLATE.keys()))
         writer.writeheader()

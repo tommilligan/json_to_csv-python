@@ -1,0 +1,14 @@
+{
+    "animals": [
+        {
+            "name": "rabbit",
+            "age": "6"
+        },
+        {
+            "name": "dog",
+            "age": "12"
+        }
+    ],
+    "date": "2017-09-24T21:19:34",
+    "validated": true
+}

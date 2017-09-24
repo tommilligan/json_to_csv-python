@@ -46,7 +46,10 @@ def main():
     logger.debug(args)
 
     # Call module
-    json_to_csv.jsonToCsv(args.inputFile, args.outputFile)
+    with open(args.inputFile, "r") as fh:
+        jsonString = json.load(fh)
+
+    json_to_csv.structureToCsv(jsonString, args.outputFile)
     
     logger.debug("Main completed")
 
